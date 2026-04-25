@@ -6,6 +6,8 @@ function App() {
   const [formData, setFormData] = useState({
     name: '',
     price: '',
+    description: '',
+    category: 'Electronics',
     // TODO (Student): Add missing fields for the state
   });
 
@@ -77,6 +79,25 @@ function App() {
               required
             />
           </div>
+          <div className="form-group">
+            <label>Description:</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Category:</label>
+            <select name="category" value={formData.category} onChange={handleChange}>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Food">Food</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
 
           {/* TODO (Student): Add input fields for 'description' and 'category' here */}
 
@@ -95,8 +116,10 @@ function App() {
                 <div className="item-details">
                   <h3>{item.name}</h3>
                   <p>Price: ${item.price}</p>
-                  {/* TODO (Student): Display 'description' and 'category' here */}
+                  <p><strong>Description:</strong> {item.description}</p>
+                  <p><strong>Category:</strong> {item.category}</p>
                 </div>
+
                 <div className="item-actions">
                   <button
                     className="btn-danger"
