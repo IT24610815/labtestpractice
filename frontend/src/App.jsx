@@ -9,9 +9,11 @@ function App() {
     // TODO (Student): Add missing fields for the state
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   const fetchItems = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/items');
+      const res = await axios.get(`${API_URL}/api/items`);
       setItems(res.data);
     } catch (err) {
       console.error('Error fetching items:', err);
@@ -29,7 +31,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/items', formData);
+      await axios.post(`${API_URL}/api/items`, formData);
       fetchItems(); // Refresh the list
       setFormData({
         name: '',
